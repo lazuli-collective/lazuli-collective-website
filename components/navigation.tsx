@@ -8,9 +8,10 @@ import { cn } from "@/lib/utils"
 import { BRAND, CONTACT } from "@/lib/constants"
 
 const navLinks = [
-  { href: "/expeditions", label: "Expeditions" },
-  { href: "/network", label: "The Network" },
-  { href: "/partner/apply", label: "Partner With Us" },
+  { href: "#expeditions", label: "Expeditions" },
+  { href: "#tailor-made", label: "Tailor-Made" },
+  // { href: "#network", label: "The Network" }, // Hidden until ready
+  { href: "#partner", label: "Partner With Us" },
 ]
 
 export function Navigation() {

@@ -3,7 +3,7 @@ import { HeroSection } from "@/components/hero-section"
 import { ValueProposition } from "@/components/value-proposition"
 import { ExpeditionsSection } from "@/components/expeditions-section"
 import { TailorMadeSection } from "@/components/tailor-made-section"
-import { NetworkSection } from "@/components/network-section"
+// import { NetworkSection } from "@/components/network-section" // Hidden until ready
 import { PartnerSection } from "@/components/partner-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
@@ -16,7 +16,7 @@ export default function HomePage() {
       <ValueProposition />
       <ExpeditionsSection />
       <TailorMadeSection />
-      <NetworkSection />
+      {/* <NetworkSection /> */} {/* Hidden until ready */}
       <PartnerSection />
       <ContactSection />
       <Footer />

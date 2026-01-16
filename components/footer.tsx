@@ -6,7 +6,7 @@ const footerLinks = {
   explore: [
     { label: "Expeditions", href: "#expeditions" },
     { label: "Tailor-Made", href: "#tailor-made" },
-    { label: "The Network", href: "/network" },
+    // { label: "The Network", href: "/network" }, // Hidden until ready
     { label: "Journal", href: "#journal" },
   ],
   company: [
