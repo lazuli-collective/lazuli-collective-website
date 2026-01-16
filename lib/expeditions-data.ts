@@ -17,8 +17,8 @@ export const expeditions: Expedition[] = [
     duration: "8 days",
     spots: 8,
     totalSpots: 12,
-    image: "/images/expeditions/gallipoli-shipwreck.jpg",
-    heroImage: "/images/expeditions/gallipoli-shipwreck-hero.jpg",
+    image: "/images/expeditions/gallipoli-wrecks.jpg",
+    heroImage: "/images/expeditions/gallipoli-wrecks.jpg",
     description:
       "Descend into history. Eight days exploring the legendary WWI wrecks of the Dardanelles—from HMS Majestic at 24m to the deepest battleships at 90m. Open Circuit and CCR configurations welcome.",
     longDescription:
@@ -139,8 +139,8 @@ export const expeditions: Expedition[] = [
     duration: "8 days",
     spots: 10,
     totalSpots: 14,
-    image: "/images/expeditions/dahab-blue-hole.jpg",
-    heroImage: "/images/expeditions/dahab-blue-hole.jpg",
+    image: "/images/expeditions/dahab-canyon.jpg",
+    heroImage: "/images/expeditions/dahab-canyon.jpg",
     description:
       "Beyond the Blue Hole. A week-long liveaboard expedition from Hurghada exploring Dahab's lesser-known canyon systems and underwater caves—40m to 70m+ on trimix, aboard one of the Red Sea's finest vessels.",
     longDescription:
@@ -253,8 +253,8 @@ export const expeditions: Expedition[] = [
     duration: "5 days",
     spots: 12,
     totalSpots: 16,
-    image: "/images/expeditions/shipwreck-tec-diving.jpg",
-    heroImage: "/images/expeditions/shipwreck-tec-diving.jpg",
+    image: "/images/expeditions/rosalie-moller.jpg",
+    heroImage: "/images/expeditions/rosalie-moller.jpg",
     description:
       "The forgotten sister. While crowds flock to the Thistlegorm, technical divers can explore the hauntingly beautiful Rosalie Moller in near-solitude. Five days in the Strait of Gubal—deep wreck exploration for tec divers, stunning reef diving at Gubal Island for everyone.",
     longDescription:
@@ -349,8 +349,8 @@ export const expeditions: Expedition[] = [
     duration: "8 days",
     spots: 14,
     totalSpots: 20,
-    image: "/images/expeditions/shipwreck-tec-diving.jpg",
-    heroImage: "/images/expeditions/shipwreck-tec-diving.jpg",
+    image: "/images/expeditions/thistlegorm.jpg",
+    heroImage: "/images/expeditions/thistlegorm.jpg",
     description:
       "The ultimate wreck diving safari. One week, seven legendary shipwrecks—from the iconic Thistlegorm to the Abu Nuhas graveyard. Premium liveaboard, world-class diving, and stories that span centuries of maritime history.",
     longDescription:
