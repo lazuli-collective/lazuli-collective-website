@@ -1,53 +1,14 @@
 "use client"
 
 import Image from "next/image"
-import { Star, Shield, Award } from "lucide-react"
+import Link from "next/link"
+import { Star, Shield, Award, ArrowRight } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { partners } from "@/lib/partners-data"
 
-const partners = [
-  {
-    name: "Red Sea Divers",
-    type: "Dive Center",
-    location: "Hurghada, Egypt",
-    tier: "Signature",
-    logo: "/dive-center-logo-minimal-professional.jpg",
-  },
-  {
-    name: "Aegean Adventures",
-    type: "Liveaboard",
-    location: "Bodrum, Turkey",
-    tier: "Signature",
-    logo: "/liveaboard-boat-company-logo-minimal.jpg",
-  },
-  {
-    name: "Sinai Safari Co.",
-    type: "Desert Tours",
-    location: "Dahab, Egypt",
-    tier: "Verified",
-    logo: "/safari-tour-company-logo-desert-minimal.jpg",
-  },
-  {
-    name: "Gallipoli Tek",
-    type: "Tech Diving",
-    location: "Çanakkale, Turkey",
-    tier: "Signature",
-    logo: "/technical-diving-company-logo-minimal.jpg",
-  },
-  {
-    name: "Luxor Expeditions",
-    type: "Historical Tours",
-    location: "Luxor, Egypt",
-    tier: "Verified",
-    logo: "/archaeological-tour-company-logo-minimal.jpg",
-  },
-  {
-    name: "Antalya Blue",
-    type: "Dive Resort",
-    location: "Antalya, Turkey",
-    tier: "Verified",
-    logo: "/dive-resort-logo-ocean-minimal.jpg",
-  },
-]
+// Show only top 6 partners on home page
+const featuredPartners = partners.slice(0, 6)
 
 export function NetworkSection() {
   return (
@@ -89,13 +50,13 @@ export function NetworkSection() {
 
         {/* Partners Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {partners.map((partner, index) => (
+          {featuredPartners.map((partner, index) => (
             <div
               key={index}
               className="group bg-primary-foreground/5 border border-primary-foreground/10 rounded-lg p-6 hover:bg-primary-foreground/10 transition-all duration-300"
             >
               <div className="flex items-start justify-between mb-4">
-                <div className="relative w-20 h-10 bg-primary-foreground/10 rounded flex items-center justify-center">
+                <div className="relative w-16 h-16 bg-primary-foreground/10 rounded flex items-center justify-center">
                   <Image
                     src={partner.logo || "/placeholder.svg"}
                     alt={partner.name}
@@ -121,12 +82,26 @@ export function NetworkSection() {
           ))}
         </div>
 
+        {/* View All Button */}
+        <div className="text-center mt-12">
+          <Button
+            variant="outline"
+            className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 gap-2"
+            asChild
+          >
+            <Link href="/network">
+              View All Partners
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </Button>
+        </div>
+
         {/* Bottom Text */}
-        <p className="text-center text-primary-foreground/60 mt-12 text-sm">
+        <p className="text-center text-primary-foreground/60 mt-8 text-sm">
           Interested in joining our network?{" "}
-          <a href="#partner" className="underline hover:text-primary-foreground">
+          <Link href="/partner/apply" className="underline hover:text-primary-foreground">
             Learn about our vetting process
-          </a>
+          </Link>
         </p>
       </div>
     </section>

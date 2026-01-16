@@ -2,8 +2,7 @@
 
 import type React from "react"
 import { useState } from "react"
-import Link from "next/link"
-import { ArrowLeft, Send, CheckCircle, Shield, Users, TrendingUp } from "lucide-react"
+import { Send, CheckCircle, Shield, Users, TrendingUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -49,17 +48,8 @@ export function PartnerApplicationForm() {
   }
 
   return (
-    <section className="pt-28 pb-20 bg-background">
+    <section className="pt-32 pb-20 bg-background">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Back Link */}
-        <Link
-          href="/#partner"
-          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Back to Home
-        </Link>
-
         <div className="grid lg:grid-cols-[1fr_380px] gap-12">
           {/* Form */}
           <div>

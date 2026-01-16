@@ -8,9 +8,7 @@ import { cn } from "@/lib/utils"
 
 const navLinks = [
   { href: "/expeditions", label: "Expeditions" },
-  { href: "/#tailor-made", label: "Tailor-Made" },
-  { href: "/#network", label: "The Network" },
-  { href: "/#destinations", label: "Destinations" },
+  { href: "/network", label: "The Network" },
   { href: "/partner/apply", label: "Partner With Us" },
 ]
 

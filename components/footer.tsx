@@ -5,14 +5,8 @@ const footerLinks = {
   explore: [
     { label: "Expeditions", href: "#expeditions" },
     { label: "Tailor-Made", href: "#tailor-made" },
-    { label: "The Network", href: "#network" },
+    { label: "The Network", href: "/network" },
     { label: "Journal", href: "#journal" },
-  ],
-  destinations: [
-    { label: "Egypt", href: "#egypt" },
-    { label: "Turkey", href: "#turkey" },
-    { label: "Red Sea", href: "#red-sea" },
-    { label: "Gallipoli", href: "#gallipoli" },
   ],
   company: [
     { label: "About Us", href: "#about" },
@@ -26,7 +20,7 @@ export function Footer() {
   return (
     <footer className="bg-foreground text-background py-16">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-4">
@@ -79,19 +73,6 @@ export function Footer() {
             <h4 className="font-medium mb-4">Explore</h4>
             <ul className="space-y-3">
               {footerLinks.explore.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-background/60 hover:text-background transition-colors text-sm">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-medium mb-4">Destinations</h4>
-            <ul className="space-y-3">
-              {footerLinks.destinations.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-background/60 hover:text-background transition-colors text-sm">
                     {link.label}
