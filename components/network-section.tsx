@@ -89,8 +89,8 @@ export function NetworkSection() {
         {/* View All Button */}
         <div className="mt-12 text-center">
           <Button
-            variant="outline"
-            className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 gap-2"
+            variant="secondary"
+            className="gap-2"
             asChild
           >
             <Link href="/network">

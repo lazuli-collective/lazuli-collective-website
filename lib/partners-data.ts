@@ -8,58 +8,58 @@ import type { Partner } from "./types"
  */
 export const partners: Partner[] = [
   {
-    name: "Red Sea Divers",
-    type: "Dive Center",
+    name: "Plop Tours",
+    type: "Dive Operator",
     location: "Hurghada, Egypt",
     tier: "Signature",
-    logo: "/images/partners/red-sea-divers.jpg",
+    logo: "/images/partners/ploptours.jpg",
     description:
-      "Award-winning dive center with over 20 years of experience in the Red Sea. Specializing in technical diving, wreck exploration, and marine conservation. PADI 5-star facility with modern equipment and multilingual instructors.",
+      "Premium Red Sea dive tours and spiritual cruises combining world-class diving with transformative wellness experiences. Offering bespoke liveaboard expeditions that seamlessly blend underwater exploration with yoga, meditation, and holistic practices for the mindful adventurer.",
   },
   {
-    name: "Aegean Adventures",
+    name: "Sly Dive",
     type: "Liveaboard",
-    location: "Bodrum, Turkey",
-    tier: "Signature",
-    logo: "/images/partners/aegean-adventures.jpg",
-    description:
-      "Luxury liveaboard experiences along Turkey's stunning Aegean coast. Fleet of traditional Turkish gulets and modern yachts, offering diving, sailing, and cultural exploration. Gourmet cuisine and personalized itineraries.",
-  },
-  {
-    name: "Sinai Safari Co.",
-    type: "Desert Tours",
     location: "Dahab, Egypt",
-    tier: "Verified",
-    logo: "/images/partners/sinai-safari.jpg",
-    description:
-      "Expert-led desert expeditions into the heart of Sinai. Camel treks, Bedouin cultural experiences, and off-road adventures. Small group sizes ensure authentic experiences with local communities and pristine desert landscapes.",
-  },
-  {
-    name: "Gallipoli Tek",
-    type: "Tech Diving",
-    location: "Çanakkale, Turkey",
     tier: "Signature",
-    logo: "/images/partners/gallipoli-tek.jpg",
+    logo: "/images/partners/slydive.jpg",
     description:
-      "Premier technical diving operation specializing in Gallipoli's historic WWI shipwrecks. TDI-certified instructors, advanced mixed-gas diving, and deep wreck penetration. Combining history with world-class technical diving.",
+      "Premier 5-star dive center in Dahab specializing in technical diving with comprehensive TDI curriculum from intro to advanced trimix. Fully rebreather-friendly facility offering guided technical dives, regular Red Sea safaris, and industry workshops. Student-centered approach with meticulous attention to detail and safety.",
   },
   {
-    name: "Luxor Expeditions",
-    type: "Historical Tours",
-    location: "Luxor, Egypt",
-    tier: "Verified",
-    logo: "/images/partners/luxor-expeditions.jpg",
+    name: "Sofie Henriksson",
+    type: "Technical Dive Instructor",
+    location: "Hurghada, Egypt",
+    tier: "Signature",
+    logo: "/images/partners/sofiehenriksson.jpg",
     description:
-      "Private archaeological tours led by qualified Egyptologists. Exclusive access to lesser-known tombs and temples, avoiding crowds. Hot air balloon flights over the Valley of the Kings and bespoke historical experiences.",
+      "PADI Technical Instructor and expedition leader with over 10,000 dives across 15 years. Specializes in technical diving education and leading exploratory expeditions. Focuses on building solid foundations that give divers absolute freedom to explore with confidence and joy.",
   },
   {
-    name: "Antalya Blue",
-    type: "Dive Resort",
-    location: "Antalya, Turkey",
+    name: "Audrey Cudel",
+    type: "Tech/Cave Diving Instructor",
+    location: "Gozo, Malta",
     tier: "Verified",
-    logo: "/images/partners/antalya-blue.jpg",
+    logo: "/images/partners/audreycudel.jpg",
     description:
-      "Boutique dive resort on the Turkish Riviera offering both recreational and technical diving. Daily boat trips to pristine dive sites, underwater caves, and ancient shipwrecks. Full-service resort with accommodation and training facilities.",
+      "TDI SDI Instructor Trainer & Full Cave Evaluator with over 30 years of diving experience. Specialized in sidemount, technical sidemount, and cave diving instruction with operations in Gozo, France, and Mexico.",
+  },
+  {
+    name: "Galipoli Wrecks",
+    type: "Dive Center",
+    location: "Gallipoli, Turkey",
+    tier: "Verified",
+    logo: "/images/partners/gallipoliwrecks.jpg",
+    description:
+      "Specialist dive center for the Gallipoli Historical Underwater Park, featuring 23 WWI shipwrecks from the legendary 1915 Dardanelles Campaign. Explore Allied warships, minesweepers, and support vessels at this world-renowned historical dive site.",
+  },
+  {
+    name: "Celesta",
+    type: "Liveaboard",
+    location: "Hurghada, Egypt",
+    tier: "Verified",
+    logo: "/images/partners/celesta.jpg",
+    description:
+      "Premium Red Sea liveaboard safari boat offering versatile expeditions for recreational and technical/CCR divers. Fully equipped for challenging dive sites while also hosting yoga and spiritual retreats, blending underwater exploration with holistic wellness.",
   },
 ]
 
