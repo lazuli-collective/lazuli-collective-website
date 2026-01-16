@@ -15,42 +15,8 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-
-interface CrewMember {
-  name: string
-  role: string
-  bio: string
-}
-
-interface ItineraryDay {
-  day: number
-  title: string
-  description: string
-}
-
-interface Expedition {
-  id: string
-  title: string
-  location: string
-  region: string
-  type: string
-  dates: string
-  duration: string
-  spots: number
-  totalSpots: number
-  image: string
-  heroImage: string
-  description: string
-  longDescription: string
-  highlights: string[]
-  status: string
-  priceFrom: string
-  included: string[]
-  notIncluded: string[]
-  requirements: string[]
-  itinerary: ItineraryDay[]
-  crew: CrewMember[]
-}
+import { CONTACT } from "@/lib/constants"
+import type { Expedition } from "@/lib/types"
 
 export function ExpeditionDetail({ expedition }: { expedition: Expedition }) {
   return (
@@ -64,20 +30,20 @@ export function ExpeditionDetail({ expedition }: { expedition: Expedition }) {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent" />
+        <div className="from-foreground/80 via-foreground/30 absolute inset-0 bg-gradient-to-t to-transparent" />
 
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
-          <div className="max-w-7xl mx-auto">
+        <div className="absolute right-0 bottom-0 left-0 p-6 md:p-12">
+          <div className="mx-auto max-w-7xl">
             {/* Back Link */}
             <Link
               href="/expeditions"
-              className="inline-flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors mb-6"
+              className="text-primary-foreground/80 hover:text-primary-foreground mb-6 inline-flex items-center gap-2 transition-colors"
             >
-              <ArrowLeft className="w-4 h-4" />
+              <ArrowLeft className="h-4 w-4" />
               All Expeditions
             </Link>
 
-            <div className="flex flex-wrap gap-3 mb-4">
+            <div className="mb-4 flex flex-wrap gap-3">
               <Badge className="bg-primary text-primary-foreground">{expedition.type}</Badge>
               <Badge
                 className={
@@ -92,21 +58,21 @@ export function ExpeditionDetail({ expedition }: { expedition: Expedition }) {
               </Badge>
             </div>
 
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4 text-balance">
+            <h1 className="text-primary-foreground mb-4 font-serif text-4xl text-balance md:text-5xl lg:text-6xl">
               {expedition.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-primary-foreground/90">
+            <div className="text-primary-foreground/90 flex flex-wrap items-center gap-x-6 gap-y-2">
               <span className="flex items-center gap-2">
-                <MapPin className="w-5 h-5" />
+                <MapPin className="h-5 w-5" />
                 {expedition.location} — {expedition.region}
               </span>
               <span className="flex items-center gap-2">
-                <Calendar className="w-5 h-5" />
+                <Calendar className="h-5 w-5" />
                 {expedition.dates}
               </span>
               <span className="flex items-center gap-2">
-                <Clock className="w-5 h-5" />
+                <Clock className="h-5 w-5" />
                 {expedition.duration}
               </span>
             </div>
@@ -115,24 +81,26 @@ export function ExpeditionDetail({ expedition }: { expedition: Expedition }) {
       </section>
 
       {/* Main Content */}
-      <section className="py-16 bg-background">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-[1fr_380px] gap-12">
+      <section className="bg-background py-16">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid gap-12 lg:grid-cols-[1fr_380px]">
             {/* Left Column - Content */}
             <div>
               {/* Overview */}
               <div className="mb-12">
-                <h2 className="font-serif text-2xl text-foreground mb-4">Overview</h2>
-                <p className="text-muted-foreground leading-relaxed text-lg mb-6">{expedition.longDescription}</p>
+                <h2 className="text-foreground mb-4 font-serif text-2xl">Overview</h2>
+                <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
+                  {expedition.longDescription}
+                </p>
 
                 {/* Highlights */}
                 <div className="flex flex-wrap gap-3">
                   {expedition.highlights.map((highlight) => (
                     <span
                       key={highlight}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-secondary rounded-full text-sm text-secondary-foreground"
+                      className="bg-secondary text-secondary-foreground inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm"
                     >
-                      <Compass className="w-4 h-4 text-primary" />
+                      <Compass className="text-primary h-4 w-4" />
                       {highlight}
                     </span>
                   ))}
@@ -141,52 +109,62 @@ export function ExpeditionDetail({ expedition }: { expedition: Expedition }) {
 
               {/* Itinerary */}
               <div className="mb-12">
-                <h2 className="font-serif text-2xl text-foreground mb-6">Day-by-Day Itinerary</h2>
+                <h2 className="text-foreground mb-6 font-serif text-2xl">Day-by-Day Itinerary</h2>
                 <div className="space-y-0">
-                  {expedition.itinerary.map((day, index) => (
+                  {expedition.itinerary.map((day) => (
                     <div
                       key={day.day}
-                      className="relative pl-8 pb-8 border-l-2 border-border last:border-l-transparent last:pb-0"
+                      className="border-border relative border-l-2 pb-8 pl-8 last:border-l-transparent last:pb-0"
                     >
                       {/* Day marker */}
-                      <div className="absolute -left-3 top-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center">
-                        <span className="text-xs font-medium text-primary-foreground">{day.day}</span>
+                      <div className="bg-primary absolute top-0 -left-3 flex h-6 w-6 items-center justify-center rounded-full">
+                        <span className="text-primary-foreground text-xs font-medium">
+                          {day.day}
+                        </span>
                       </div>
 
-                      <div className="bg-card border border-border rounded-lg p-5 ml-4">
-                        <h3 className="font-medium text-foreground mb-2">{day.title}</h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed">{day.description}</p>
+                      <div className="bg-card border-border ml-4 rounded-lg border p-5">
+                        <h3 className="text-foreground mb-2 font-medium">{day.title}</h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                          {day.description}
+                        </p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* What's Included */}
-              <div className="grid md:grid-cols-2 gap-8 mb-12">
+              {/* Included */}
+              <div className="mb-12 grid gap-8 md:grid-cols-2">
                 <div>
-                  <h2 className="font-serif text-xl text-foreground mb-4 flex items-center gap-2">
-                    <Check className="w-5 h-5 text-primary" />
+                  <h2 className="text-foreground mb-4 flex items-center gap-2 font-serif text-xl">
+                    <Check className="text-primary h-5 w-5" />
                     What's Included
                   </h2>
                   <ul className="space-y-3">
                     {expedition.included.map((item) => (
-                      <li key={item} className="flex items-start gap-3 text-muted-foreground text-sm">
-                        <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                      <li
+                        key={item}
+                        className="text-muted-foreground flex items-start gap-3 text-sm"
+                      >
+                        <Check className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
                         {item}
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <h2 className="font-serif text-xl text-foreground mb-4 flex items-center gap-2">
-                    <X className="w-5 h-5 text-accent" />
+                  <h2 className="text-foreground mb-4 flex items-center gap-2 font-serif text-xl">
+                    <X className="text-accent h-5 w-5" />
                     Not Included
                   </h2>
                   <ul className="space-y-3">
                     {expedition.notIncluded.map((item) => (
-                      <li key={item} className="flex items-start gap-3 text-muted-foreground text-sm">
-                        <X className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+                      <li
+                        key={item}
+                        className="text-muted-foreground flex items-start gap-3 text-sm"
+                      >
+                        <X className="text-accent mt-0.5 h-4 w-4 flex-shrink-0" />
                         {item}
                       </li>
                     ))}
@@ -196,15 +174,18 @@ export function ExpeditionDetail({ expedition }: { expedition: Expedition }) {
 
               {/* Requirements */}
               <div className="mb-12">
-                <h2 className="font-serif text-xl text-foreground mb-4 flex items-center gap-2">
-                  <Shield className="w-5 h-5 text-primary" />
+                <h2 className="text-foreground mb-4 flex items-center gap-2 font-serif text-xl">
+                  <Shield className="text-primary h-5 w-5" />
                   Requirements
                 </h2>
-                <div className="bg-secondary/50 border border-border rounded-lg p-6">
+                <div className="bg-secondary/50 border-border rounded-lg border p-6">
                   <ul className="space-y-3">
                     {expedition.requirements.map((req) => (
-                      <li key={req} className="flex items-start gap-3 text-muted-foreground text-sm">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2" />
+                      <li
+                        key={req}
+                        className="text-muted-foreground flex items-start gap-3 text-sm"
+                      >
+                        <div className="bg-primary mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full" />
                         {req}
                       </li>
                     ))}
@@ -215,13 +196,16 @@ export function ExpeditionDetail({ expedition }: { expedition: Expedition }) {
               {/* Crew */}
               {expedition.crew.length > 0 && (
                 <div>
-                  <h2 className="font-serif text-2xl text-foreground mb-6">Your Crew</h2>
-                  <div className="grid sm:grid-cols-2 gap-6">
+                  <h2 className="text-foreground mb-6 font-serif text-2xl">Your Crew</h2>
+                  <div className="grid gap-6 sm:grid-cols-2">
                     {expedition.crew.map((member) => (
-                      <div key={member.name} className="bg-card border border-border rounded-lg p-5">
-                        <div className="flex items-center gap-4 mb-3">
-                          <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center">
-                            <span className="font-serif text-xl text-primary">
+                      <div
+                        key={member.name}
+                        className="bg-card border-border rounded-lg border p-5"
+                      >
+                        <div className="mb-3 flex items-center gap-4">
+                          <div className="bg-secondary flex h-14 w-14 items-center justify-center rounded-full">
+                            <span className="text-primary font-serif text-xl">
                               {member.name
                                 .split(" ")
                                 .map((n) => n[0])
@@ -229,8 +213,8 @@ export function ExpeditionDetail({ expedition }: { expedition: Expedition }) {
                             </span>
                           </div>
                           <div>
-                            <h3 className="font-medium text-foreground">{member.name}</h3>
-                            <p className="text-sm text-primary">{member.role}</p>
+                            <h3 className="text-foreground font-medium">{member.name}</h3>
+                            <p className="text-primary text-sm">{member.role}</p>
                           </div>
                         </div>
                         <p className="text-muted-foreground text-sm">{member.bio}</p>
@@ -242,11 +226,11 @@ export function ExpeditionDetail({ expedition }: { expedition: Expedition }) {
             </div>
 
             {/* Right Column - Sticky Sidebar */}
-            <div className="lg:sticky lg:top-28 h-fit">
-              <div className="bg-card border border-border rounded-lg overflow-hidden">
+            <div className="h-fit lg:sticky lg:top-28">
+              <div className="bg-card border-border overflow-hidden rounded-lg border">
                 <div className="relative aspect-video">
                   <Image
-                    src={expedition.image || "/placeholder.svg"}
+                    src={expedition.image || "/images/placeholders/default.svg"}
                     alt={expedition.title}
                     fill
                     className="object-cover"
@@ -254,14 +238,16 @@ export function ExpeditionDetail({ expedition }: { expedition: Expedition }) {
                 </div>
                 <div className="p-6">
                   {/* Price */}
-                  <div className="flex items-baseline justify-between mb-4">
+                  <div className="mb-4 flex items-baseline justify-between">
                     <span className="text-muted-foreground text-sm">Starting from</span>
-                    <span className="font-serif text-3xl text-foreground">{expedition.priceFrom}</span>
+                    <span className="text-foreground font-serif text-3xl">
+                      {expedition.priceFrom}
+                    </span>
                   </div>
 
                   {/* Availability */}
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground mb-6 pb-6 border-b border-border">
-                    <Users className="w-4 h-4" />
+                  <div className="text-muted-foreground border-border mb-6 flex items-center gap-3 border-b pb-6 text-sm">
+                    <Users className="h-4 w-4" />
                     <span>
                       <strong className={expedition.spots <= 5 ? "text-accent" : "text-foreground"}>
                         {expedition.spots} spots
@@ -272,49 +258,52 @@ export function ExpeditionDetail({ expedition }: { expedition: Expedition }) {
 
                   {/* CTAs */}
                   <div className="space-y-3">
-                    <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
+                    <Button
+                      asChild
+                      className="bg-primary hover:bg-primary/90 text-primary-foreground w-full gap-2"
+                    >
                       <Link href={`/expeditions/${expedition.id}/request`}>
                         Request to Join
-                        <ArrowRight className="w-4 h-4" />
+                        <ArrowRight className="h-4 w-4" />
                       </Link>
                     </Button>
 
                     <Button variant="outline" className="w-full gap-2 bg-transparent" asChild>
                       <a
-                        href={`https://wa.me/1234567890?text=Hi! I have questions about the ${expedition.title}`}
+                        href={`${CONTACT.whatsapp.url}?text=${encodeURIComponent(`Hi! I have questions about the ${expedition.title}`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <MessageCircle className="w-4 h-4" />
+                        <MessageCircle className="h-4 w-4" />
                         WhatsApp Us
                       </a>
                     </Button>
                   </div>
 
-                  <p className="text-muted-foreground text-xs text-center mt-4">
+                  <p className="text-muted-foreground mt-4 text-center text-xs">
                     Final pricing and availability confirmed upon inquiry.
                   </p>
                 </div>
               </div>
 
               {/* Trust Signals */}
-              <div className="mt-6 bg-secondary/50 border border-border rounded-lg p-5">
-                <h4 className="font-medium text-foreground text-sm mb-3">Why book with Lazuli?</h4>
-                <ul className="space-y-2 text-xs text-muted-foreground">
+              <div className="bg-secondary/50 border-border mt-6 rounded-lg border p-5">
+                <h4 className="text-foreground mb-3 text-sm font-medium">Why book with Lazuli?</h4>
+                <ul className="text-muted-foreground space-y-2 text-xs">
                   <li className="flex items-start gap-2">
-                    <Check className="w-3.5 h-3.5 text-primary flex-shrink-0 mt-0.5" />
+                    <Check className="text-primary mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
                     Vetted operators only
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="w-3.5 h-3.5 text-primary flex-shrink-0 mt-0.5" />
+                    <Check className="text-primary mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
                     On-the-ground support in Egypt & Turkey
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="w-3.5 h-3.5 text-primary flex-shrink-0 mt-0.5" />
+                    <Check className="text-primary mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
                     Small groups, big experiences
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="w-3.5 h-3.5 text-primary flex-shrink-0 mt-0.5" />
+                    <Check className="text-primary mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
                     Flexible payment plans available
                   </li>
                 </ul>

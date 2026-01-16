@@ -7,7 +7,14 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { BRAND, CONTACT } from "@/lib/constants"
 
 const benefits = [
   {
@@ -44,27 +51,50 @@ export function PartnerApplicationForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[v0] Partner application submitted:", formData)
+    const subject = encodeURIComponent(`Partner Application: ${formData.companyName}`)
+    const body = encodeURIComponent(
+      `--- COMPANY INFO ---\n` +
+        `Company: ${formData.companyName}\n` +
+        `Website: ${formData.website || "Not provided"}\n` +
+        `Location: ${formData.location}\n` +
+        `Service Type: ${formData.serviceType}\n` +
+        `Years Operating: ${formData.yearsOperating}\n\n` +
+        `--- CONTACT PERSON ---\n` +
+        `Name: ${formData.contactName}\n` +
+        `Email: ${formData.email}\n` +
+        `Phone: ${formData.phone}\n\n` +
+        `--- ABOUT THE BUSINESS ---\n` +
+        `Description:\n${formData.description}\n\n` +
+        `Certifications:\n${formData.certifications || "Not provided"}\n\n` +
+        `Why Join ${BRAND.name}:\n${formData.whyJoin || "Not provided"}`
+    )
+    window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`
   }
 
   return (
-    <section className="pt-32 pb-20 bg-background">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid lg:grid-cols-[1fr_380px] gap-12">
+    <section className="bg-background pt-32 pb-20">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid gap-12 lg:grid-cols-[1fr_380px]">
           {/* Form */}
           <div>
-            <p className="text-accent uppercase tracking-[0.2em] text-sm mb-4 font-medium">Partner Application</p>
-            <h1 className="font-serif text-3xl md:text-4xl text-foreground mb-3">Apply to Join the Network</h1>
-            <p className="text-muted-foreground text-lg mb-8">
-              We're selectively expanding our network of vetted operators in Egypt and Turkey. Complete this application
-              and our team will be in touch.
+            <p className="text-accent mb-4 text-sm font-medium tracking-[0.2em] uppercase">
+              Partner Application
+            </p>
+            <h1 className="text-foreground mb-3 font-serif text-3xl md:text-4xl">
+              Apply to Join the Network
+            </h1>
+            <p className="text-muted-foreground mb-8 text-lg">
+              We're selectively expanding our network of vetted operators in Egypt and Turkey.
+              Complete this application and our team will be in touch.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Company Info */}
               <div className="space-y-4">
-                <h3 className="font-medium text-foreground border-b border-border pb-2">Company Information</h3>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <h3 className="text-foreground border-border border-b pb-2 font-medium">
+                  Company Information
+                </h3>
+                <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="companyName">Company Name *</Label>
                     <Input
@@ -86,7 +116,7 @@ export function PartnerApplicationForm() {
                     />
                   </div>
                 </div>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="location">Primary Location *</Label>
                     <Select
@@ -152,8 +182,10 @@ export function PartnerApplicationForm() {
 
               {/* Contact Info */}
               <div className="space-y-4">
-                <h3 className="font-medium text-foreground border-b border-border pb-2">Contact Person</h3>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <h3 className="text-foreground border-border border-b pb-2 font-medium">
+                  Contact Person
+                </h3>
+                <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="contactName">Contact Name *</Label>
                     <Input
@@ -191,9 +223,13 @@ export function PartnerApplicationForm() {
 
               {/* About the Business */}
               <div className="space-y-4">
-                <h3 className="font-medium text-foreground border-b border-border pb-2">About Your Business</h3>
+                <h3 className="text-foreground border-border border-b pb-2 font-medium">
+                  About Your Business
+                </h3>
                 <div className="space-y-2">
-                  <Label htmlFor="description">Describe your services and what makes you stand out *</Label>
+                  <Label htmlFor="description">
+                    Describe your services and what makes you stand out *
+                  </Label>
                   <Textarea
                     id="description"
                     placeholder="Tell us about your operation, your team, your vessels/facilities, and what sets you apart..."
@@ -214,7 +250,7 @@ export function PartnerApplicationForm() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="whyJoin">Why do you want to join The Lazuli Collective?</Label>
+                  <Label htmlFor="whyJoin">Why do you want to join {BRAND.name}?</Label>
                   <Textarea
                     id="whyJoin"
                     placeholder="What interests you about partnering with us?"
@@ -228,31 +264,31 @@ export function PartnerApplicationForm() {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground w-full gap-2"
               >
-                <Send className="w-4 h-4" />
+                <Send className="h-4 w-4" />
                 Submit Application
               </Button>
 
-              <p className="text-muted-foreground text-xs text-center">
+              <p className="text-muted-foreground text-center text-xs">
                 We review all applications carefully. Expect a response within 5-7 business days.
               </p>
             </form>
           </div>
 
           {/* Sidebar */}
-          <div className="lg:sticky lg:top-28 h-fit space-y-6">
+          <div className="h-fit space-y-6 lg:sticky lg:top-28">
             {/* Benefits */}
-            <div className="bg-card border border-border rounded-lg p-6">
-              <h3 className="font-serif text-xl text-foreground mb-6">Partner Benefits</h3>
+            <div className="bg-card border-border rounded-lg border p-6">
+              <h3 className="text-foreground mb-6 font-serif text-xl">Partner Benefits</h3>
               <div className="space-y-5">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex gap-4">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <benefit.icon className="w-5 h-5 text-primary" />
+                    <div className="bg-primary/10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full">
+                      <benefit.icon className="text-primary h-5 w-5" />
                     </div>
                     <div>
-                      <h4 className="font-medium text-foreground mb-1">{benefit.title}</h4>
+                      <h4 className="text-foreground mb-1 font-medium">{benefit.title}</h4>
                       <p className="text-muted-foreground text-sm">{benefit.description}</p>
                     </div>
                   </div>
@@ -261,8 +297,8 @@ export function PartnerApplicationForm() {
             </div>
 
             {/* What We Look For */}
-            <div className="bg-secondary/50 border border-border rounded-lg p-6">
-              <h3 className="font-serif text-lg text-foreground mb-4">What We Look For</h3>
+            <div className="bg-secondary/50 border-border rounded-lg border p-6">
+              <h3 className="text-foreground mb-4 font-serif text-lg">What We Look For</h3>
               <ul className="space-y-3">
                 {[
                   "Established track record (3+ years preferred)",
@@ -272,8 +308,8 @@ export function PartnerApplicationForm() {
                   "Commitment to sustainable practices",
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-foreground">{item}</span>
+                    <CheckCircle className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                    <span className="text-foreground text-sm">{item}</span>
                   </li>
                 ))}
               </ul>

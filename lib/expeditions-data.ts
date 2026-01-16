@@ -1,6 +1,11 @@
 import { Anchor, Mountain, Waves } from "lucide-react"
+import type { Expedition } from "./types"
 
-export const expeditions = [
+/**
+ * All available expeditions offered by The Lazuli Collective.
+ * Add new expeditions to this array to display them on the website.
+ */
+export const expeditions: Expedition[] = [
   {
     id: "gallipoli-tech-wreck-2026",
     title: "Gallipoli Tech Wreck Expedition",
@@ -12,8 +17,8 @@ export const expeditions = [
     duration: "8 days",
     spots: 3,
     totalSpots: 12,
-    image: "/shipwreck-underwater-diving-dramatic-blue-water-te.jpg",
-    heroImage: "/gallipoli-underwater-shipwreck-tech-diving-dramati.jpg",
+    image: "/images/expeditions/gallipoli-shipwreck.jpg",
+    heroImage: "/images/expeditions/gallipoli-shipwreck-hero.jpg",
     description:
       "Explore the legendary wrecks of the Dardanelles with an elite crew of tech divers. This expedition covers some of the most historically significant dive sites in the Mediterranean.",
     longDescription:
@@ -92,7 +97,8 @@ export const expeditions = [
       {
         day: 8,
         title: "Departure",
-        description: "Transfers to Istanbul or Çanakkale airport. Safe travels and until the next expedition.",
+        description:
+          "Transfers to Istanbul or Çanakkale airport. Safe travels and until the next expedition.",
       },
     ],
     crew: [
@@ -119,8 +125,8 @@ export const expeditions = [
     duration: "7 nights",
     spots: 8,
     totalSpots: 20,
-    image: "/hammerhead-shark-underwater-red-sea-egypt-diving-b.jpg",
-    heroImage: "/brothers-islands-red-sea-egypt-aerial-view-liveabo.jpg",
+    image: "/images/expeditions/brothers-islands.jpg",
+    heroImage: "/images/expeditions/brothers-islands-hero.jpg",
     description:
       "A week aboard our signature vessel, chasing sharks and exploring pristine reefs. The Brothers Islands offer some of the most thrilling diving in the Red Sea.",
     longDescription:
@@ -169,12 +175,14 @@ export const expeditions = [
       {
         day: 3,
         title: "Big Brother & Little Brother",
-        description: "Morning dives at Big Brother, afternoon transit to Little Brother. Night dive optional.",
+        description:
+          "Morning dives at Big Brother, afternoon transit to Little Brother. Night dive optional.",
       },
       {
         day: 4,
         title: "Little Brother",
-        description: "Explore the Aida wreck and pristine coral walls. Grey reef sharks and schooling fish guaranteed.",
+        description:
+          "Explore the Aida wreck and pristine coral walls. Grey reef sharks and schooling fish guaranteed.",
       },
       {
         day: 5,
@@ -189,7 +197,8 @@ export const expeditions = [
       {
         day: 7,
         title: "Elphinstone & Return",
-        description: "Dawn dive at Elphinstone for oceanic whitetips. Final dives and sail back to Hurghada.",
+        description:
+          "Dawn dive at Elphinstone for oceanic whitetips. Final dives and sail back to Hurghada.",
       },
       {
         day: 8,
@@ -221,8 +230,8 @@ export const expeditions = [
     duration: "10 days",
     spots: 12,
     totalSpots: 16,
-    image: "/sinai-desert-mountains-sunrise-golden-light-egypt-.jpg",
-    heroImage: "/dahab-blue-hole-freediving-red-sea-egypt-aerial-tu.jpg",
+    image: "/images/expeditions/sinai-desert.jpg",
+    heroImage: "/images/expeditions/dahab-blue-hole.jpg",
     description:
       "Mountains, desert canyons, and the Blue Hole. An unforgettable week of contrast combining freediving, hiking, and Bedouin hospitality.",
     longDescription:
@@ -262,12 +271,14 @@ export const expeditions = [
       {
         day: 2,
         title: "Freediving Fundamentals",
-        description: "Morning theory session. Afternoon pool/confined water practice. Evening at leisure in Dahab.",
+        description:
+          "Morning theory session. Afternoon pool/confined water practice. Evening at leisure in Dahab.",
       },
       {
         day: 3,
         title: "Blue Hole Introduction",
-        description: "First open water session at the famous Blue Hole. Depth work and technique refinement.",
+        description:
+          "First open water session at the famous Blue Hole. Depth work and technique refinement.",
       },
       {
         day: 4,
@@ -277,7 +288,8 @@ export const expeditions = [
       {
         day: 5,
         title: "Canyon & Lighthouse",
-        description: "Explore other Dahab freediving sites. The Canyon's underwater arch is unforgettable.",
+        description:
+          "Explore other Dahab freediving sites. The Canyon's underwater arch is unforgettable.",
       },
       {
         day: 6,
@@ -331,13 +343,18 @@ export const expeditions = [
     duration: "7 nights",
     spots: 6,
     totalSpots: 18,
-    image: "/oceanic-whitetip-shark-underwater-red-sea-egypt-di.jpg",
-    heroImage: "/elphinstone-reef-underwater-red-sea-shark-diving-d.jpg",
+    image: "/images/expeditions/elphinstone-shark.jpg",
+    heroImage: "/images/expeditions/elphinstone-reef-hero.jpg",
     description:
       "Dedicated to the legendary oceanic whitetip encounters at Elphinstone Reef. Timing is everything—December offers peak shark season.",
     longDescription:
       "December is prime time for oceanic whitetip encounters at Elphinstone, and this expedition is designed to maximize your time with these magnificent creatures. We spend extended time at Elphinstone and combine it with the best shark sites in the southern Red Sea.",
-    highlights: ["Elphinstone Reef", "Oceanic whitetips", "Daedalus Reef", "Professional photography"],
+    highlights: [
+      "Elphinstone Reef",
+      "Oceanic whitetips",
+      "Daedalus Reef",
+      "Professional photography",
+    ],
     status: "Now Booking",
     priceFrom: "€2,100",
     included: [
@@ -372,7 +389,8 @@ export const expeditions = [
       {
         day: 2,
         title: "Elphinstone",
-        description: "Full day at Elphinstone. Dawn dive for oceanic whitetips, multiple wall dives.",
+        description:
+          "Full day at Elphinstone. Dawn dive for oceanic whitetips, multiple wall dives.",
       },
       {
         day: 3,
@@ -424,8 +442,8 @@ export const expeditions = [
     duration: "12 days",
     spots: 10,
     totalSpots: 14,
-    image: "/cappadocia-hot-air-balloons-sunrise-turkey-adventu.jpg",
-    heroImage: "/cappadocia-fairy-chimneys-sunrise-hot-air-balloons.jpg",
+    image: "/images/expeditions/cappadocia-balloons.jpg",
+    heroImage: "/images/expeditions/cappadocia-balloons-hero.jpg",
     description:
       "From the fairy chimneys of Cappadocia to the turquoise waters of the Aegean. This expedition combines Turkey's most iconic landscapes with hidden coastal gems.",
     longDescription:
@@ -464,7 +482,8 @@ export const expeditions = [
       {
         day: 2,
         title: "Balloon Flight",
-        description: "Pre-dawn hot air balloon flight over fairy chimneys. Afternoon explore Göreme Open Air Museum.",
+        description:
+          "Pre-dawn hot air balloon flight over fairy chimneys. Afternoon explore Göreme Open Air Museum.",
       },
       {
         day: 3,
@@ -484,7 +503,8 @@ export const expeditions = [
       {
         day: 6,
         title: "Ancient Wrecks",
-        description: "Dive ancient amphora sites. Swim in turquoise coves. Traditional Turkish dinner on deck.",
+        description:
+          "Dive ancient amphora sites. Swim in turquoise coves. Traditional Turkish dinner on deck.",
       },
       {
         day: 7,
@@ -532,14 +552,29 @@ export const expeditions = [
   },
 ]
 
-export function getExpeditionById(id: string) {
+/**
+ * Find an expedition by its unique ID (URL slug).
+ * @param id - The expedition ID to search for
+ * @returns The expedition if found, undefined otherwise
+ */
+export function getExpeditionById(id: string): Expedition | undefined {
   return expeditions.find((exp) => exp.id === id)
 }
 
-export function getExpeditionsByType(type: string) {
+/**
+ * Filter expeditions by their type (e.g., "Tech Diving", "Liveaboard").
+ * @param type - The expedition type to filter by
+ * @returns Array of expeditions matching the type
+ */
+export function getExpeditionsByType(type: string): Expedition[] {
   return expeditions.filter((exp) => exp.type === type)
 }
 
-export function getExpeditionsByLocation(location: string) {
+/**
+ * Filter expeditions by location (partial match).
+ * @param location - The location string to search for (e.g., "Egypt", "Turkey")
+ * @returns Array of expeditions containing the location in their location field
+ */
+export function getExpeditionsByLocation(location: string): Expedition[] {
   return expeditions.filter((exp) => exp.location.includes(location))
 }

@@ -2,39 +2,42 @@
 
 import { ArrowDown, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { BRAND, CONTACT } from "@/lib/constants"
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/underwater-scuba-diver-silhouette-dramatic-lightin.jpg')`,
+          backgroundImage: `url('/images/hero/underwater-diver.jpg')`,
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-foreground/60 via-foreground/40 to-foreground/70" />
+        <div className="from-foreground/60 via-foreground/40 to-foreground/70 absolute inset-0 bg-gradient-to-b" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        <p className="text-sand/80 uppercase tracking-[0.3em] text-sm mb-6 font-medium">Egypt & Turkey</p>
+      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+        <p className="text-sand/80 mb-6 text-sm font-medium tracking-[0.3em] uppercase">
+          Egypt & Turkey
+        </p>
 
-        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-background font-medium leading-tight mb-6 text-balance">
-          Bespoke Adventure Network
+        <h1 className="text-background mb-6 font-serif text-4xl leading-tight font-medium text-balance sm:text-5xl md:text-6xl lg:text-7xl">
+          {BRAND.tagline}
           <br />
           <span className="text-sand">&</span> Expeditions
         </h1>
 
-        <p className="text-background/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-          Your insider connection to the best liveaboards, dive centers, and adventure providers in the region. We
-          curate the network. We plan the logistics. You just show up.
+        <p className="text-background/80 mx-auto mb-10 max-w-2xl text-lg leading-relaxed md:text-xl">
+          Your insider connection to the best liveaboards, dive centers, and adventure providers in
+          the region. We curate the network. We plan the logistics. You just show up.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col justify-center gap-4 sm:flex-row">
           <Button
             size="lg"
-            className="bg-background text-foreground hover:bg-background/90 gap-2 text-base px-8"
+            className="bg-background text-foreground hover:bg-background/90 gap-2 px-8 text-base"
             asChild
           >
             <a href="#expeditions">View Expeditions</a>
@@ -42,11 +45,11 @@ export function HeroSection() {
           <Button
             size="lg"
             variant="outline"
-            className="border-background/30 text-background hover:bg-background/10 hover:text-background gap-2 text-base px-8 bg-transparent"
+            className="border-background/30 text-background hover:bg-background/10 hover:text-background gap-2 bg-transparent px-8 text-base"
             asChild
           >
-            <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="w-5 h-5" />
+            <a href={CONTACT.whatsapp.url} target="_blank" rel="noopener noreferrer">
+              <MessageCircle className="h-5 w-5" />
               Start Planning
             </a>
           </Button>
@@ -55,11 +58,11 @@ export function HeroSection() {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <ArrowDown className="w-6 h-6 text-background/60" />
+        <ArrowDown className="text-background/60 h-6 w-6" />
       </div>
 
       {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      <div className="from-background absolute right-0 bottom-0 left-0 h-32 bg-gradient-to-t to-transparent" />
     </section>
   )
 }

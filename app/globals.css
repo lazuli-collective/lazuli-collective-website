@@ -61,6 +61,63 @@
   --stone: oklch(0.65 0.02 80);
 }
 
+/* Dark mode - Brand-consistent dark palette */
+.dark {
+  /* Dark ocean depths background */
+  --background: oklch(0.15 0.02 250);
+  --foreground: oklch(0.95 0.005 90);
+  --card: oklch(0.18 0.02 250);
+  --card-foreground: oklch(0.95 0.005 90);
+  --popover: oklch(0.18 0.02 250);
+  --popover-foreground: oklch(0.95 0.005 90);
+
+  /* Lighter Lazuli Blue for dark mode */
+  --primary: oklch(0.55 0.1 250);
+  --primary-foreground: oklch(0.15 0.02 250);
+
+  /* Dark sand/earth */
+  --secondary: oklch(0.25 0.02 80);
+  --secondary-foreground: oklch(0.9 0.02 80);
+
+  /* Dark muted */
+  --muted: oklch(0.22 0.015 250);
+  --muted-foreground: oklch(0.65 0.02 250);
+
+  /* Terracotta stays similar for visibility */
+  --accent: oklch(0.6 0.15 35);
+  --accent-foreground: oklch(0.15 0.02 250);
+
+  --destructive: oklch(0.5 0.2 27);
+  --destructive-foreground: oklch(0.95 0.005 90);
+  --border: oklch(0.28 0.02 250);
+  --input: oklch(0.22 0.02 250);
+  --ring: oklch(0.55 0.1 250);
+
+  /* Chart colors - adjusted for dark */
+  --chart-1: oklch(0.55 0.1 250);
+  --chart-2: oklch(0.6 0.15 35);
+  --chart-3: oklch(0.55 0.1 180);
+  --chart-4: oklch(0.7 0.1 80);
+  --chart-5: oklch(0.5 0.08 250);
+
+  /* Sidebar */
+  --sidebar: oklch(0.12 0.02 250);
+  --sidebar-foreground: oklch(0.95 0.005 90);
+  --sidebar-primary: oklch(0.55 0.1 250);
+  --sidebar-primary-foreground: oklch(0.15 0.02 250);
+  --sidebar-accent: oklch(0.25 0.02 80);
+  --sidebar-accent-foreground: oklch(0.9 0.02 80);
+  --sidebar-border: oklch(0.28 0.02 250);
+  --sidebar-ring: oklch(0.55 0.1 250);
+
+  /* Custom brand colors - dark mode variants */
+  --lazuli: oklch(0.55 0.1 250);
+  --lazuli-light: oklch(0.65 0.08 250);
+  --sand: oklch(0.75 0.03 80);
+  --terracotta: oklch(0.6 0.15 35);
+  --stone: oklch(0.5 0.02 80);
+}
+
 @theme inline {
   --font-sans: "Inter", "Inter Fallback", sans-serif;
   --font-serif: "Playfair Display", "Playfair Display Fallback", serif;

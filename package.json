@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "next build && bun run zip",
+    "build:only": "next build",
+    "zip": "cd out && zip -r ../out.zip . && cd .. && echo 'Created out.zip'",
     "dev": "next dev",
     "lint": "eslint",
-    "start": "next start"
+    "start": "next start",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -68,6 +72,8 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.2",
     "postcss": "^8.5",
+    "prettier": "^3.4.0",
+    "prettier-plugin-tailwindcss": "^0.6.0",
     "tailwindcss": "^4.1.9",
     "tw-animate-css": "1.3.3",
     "typescript": "^5"

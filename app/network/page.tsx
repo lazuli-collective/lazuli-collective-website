@@ -14,57 +14,63 @@ export default function NetworkPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-background">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="bg-background pt-32 pb-16">
+        <div className="mx-auto max-w-7xl px-6">
           <div className="max-w-3xl">
-            <p className="text-accent uppercase tracking-[0.2em] text-sm mb-4 font-medium">The Network</p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 leading-tight text-pretty">
+            <p className="text-accent mb-4 text-sm font-medium tracking-[0.2em] uppercase">
+              The Network
+            </p>
+            <h1 className="text-foreground mb-6 font-serif text-4xl leading-tight text-pretty md:text-5xl lg:text-6xl">
               Meet our trusted partners
             </h1>
-            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
-              Every operator in our network is personally vetted for safety, equipment standards, and guest experience.
-              We only work with the best in Egypt and Turkey.
+            <p className="text-muted-foreground text-lg leading-relaxed md:text-xl">
+              Every operator in our network is personally vetted for safety, equipment standards,
+              and guest experience. We only work with the best in Egypt and Turkey.
             </p>
           </div>
         </div>
       </section>
 
       {/* Partners List Section */}
-      <section className="py-12 bg-secondary/30">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="bg-secondary/30 py-12">
+        <div className="mx-auto max-w-7xl px-6">
           {/* Tier Legend */}
-          <div className="flex flex-wrap gap-6 mb-10">
+          <div className="mb-10 flex flex-wrap gap-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <Award className="w-5 h-5 text-primary" />
+              <div className="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-full">
+                <Award className="text-primary h-5 w-5" />
               </div>
               <div>
-                <span className="font-medium block">Lazuli Signature</span>
-                <span className="text-muted-foreground text-sm">Our A-List partners with proven excellence</span>
+                <span className="block font-medium">Lazuli Signature</span>
+                <span className="text-muted-foreground text-sm">
+                  Our A-List partners with proven excellence
+                </span>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <Shield className="w-5 h-5 text-primary" />
+              <div className="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-full">
+                <Shield className="text-primary h-5 w-5" />
               </div>
               <div>
-                <span className="font-medium block">Lazuli Verified</span>
-                <span className="text-muted-foreground text-sm">Thoroughly vetted and trusted operators</span>
+                <span className="block font-medium">Lazuli Verified</span>
+                <span className="text-muted-foreground text-sm">
+                  Thoroughly vetted and trusted operators
+                </span>
               </div>
             </div>
           </div>
 
           {/* Partners Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {partners.map((partner, index) => (
               <div
                 key={index}
-                className="group bg-card border border-border rounded-lg p-6 hover:border-primary/50 hover:shadow-lg transition-all duration-300"
+                className="group bg-card border-border hover:border-primary/50 rounded-lg border p-6 transition-all duration-300 hover:shadow-lg"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="relative w-20 h-20 bg-muted rounded flex items-center justify-center overflow-hidden">
+                <div className="mb-4 flex items-start justify-between">
+                  <div className="bg-muted relative flex h-20 w-20 items-center justify-center overflow-hidden rounded">
                     <Image
-                      src={partner.logo || "/placeholder.svg"}
+                      src={partner.logo || "/images/placeholders/default.svg"}
                       alt={partner.name}
                       fill
                       className="object-contain p-2"
@@ -78,16 +84,22 @@ export default function NetworkPage() {
                         : "border-border text-foreground"
                     }`}
                   >
-                    {partner.tier === "Signature" ? <Star className="w-3 h-3 mr-1 fill-current" /> : null}
+                    {partner.tier === "Signature" ? (
+                      <Star className="mr-1 h-3 w-3 fill-current" />
+                    ) : null}
                     {partner.tier}
                   </Badge>
                 </div>
 
-                <h3 className="font-serif text-xl mb-2 group-hover:text-primary transition-colors">{partner.name}</h3>
-                <p className="text-muted-foreground text-sm mb-1">{partner.type}</p>
-                <p className="text-muted-foreground/60 text-sm mb-4">{partner.location}</p>
+                <h3 className="group-hover:text-primary mb-2 font-serif text-xl transition-colors">
+                  {partner.name}
+                </h3>
+                <p className="text-muted-foreground mb-1 text-sm">{partner.type}</p>
+                <p className="text-muted-foreground/60 mb-4 text-sm">{partner.location}</p>
 
-                <p className="text-sm leading-relaxed text-muted-foreground">{partner.description}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {partner.description}
+                </p>
               </div>
             ))}
           </div>
@@ -95,15 +107,16 @@ export default function NetworkPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary text-primary-foreground">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="font-serif text-3xl md:text-4xl mb-4">Want to join our network?</h2>
-          <p className="text-primary-foreground/80 text-lg mb-8">
-            We're always looking for exceptional operators who share our commitment to quality and safety.
+      <section className="bg-primary text-primary-foreground py-16">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <h2 className="mb-4 font-serif text-3xl md:text-4xl">Want to join our network?</h2>
+          <p className="text-primary-foreground/80 mb-8 text-lg">
+            We're always looking for exceptional operators who share our commitment to quality and
+            safety.
           </p>
           <Link
             href="/partner/apply"
-            className="inline-block bg-primary-foreground text-primary px-8 py-3 rounded-md font-medium hover:bg-primary-foreground/90 transition-colors"
+            className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 inline-block rounded-md px-8 py-3 font-medium transition-colors"
           >
             Apply to become a partner
           </Link>

@@ -10,9 +10,16 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { CONTACT } from "@/lib/constants"
 
-interface Expedition {
+interface ExpeditionSummary {
   id: string
   title: string
   location: string
@@ -23,7 +30,7 @@ interface Expedition {
   image: string
 }
 
-export function RequestToJoinForm({ expedition }: { expedition: Expedition }) {
+export function RequestToJoinForm({ expedition }: { expedition: ExpeditionSummary }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -38,34 +45,55 @@ export function RequestToJoinForm({ expedition }: { expedition: Expedition }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[v0] Request to join submitted:", formData)
+    const subject = encodeURIComponent(`Request to Join: ${expedition.title}`)
+    const body = encodeURIComponent(
+      `EXPEDITION: ${expedition.title}\nDATES: ${expedition.dates}\n\n` +
+        `--- PERSONAL INFO ---\n` +
+        `Name: ${formData.name}\n` +
+        `Email: ${formData.email}\n` +
+        `Phone: ${formData.phone}\n` +
+        `Nationality: ${formData.nationality || "Not provided"}\n\n` +
+        `--- EXPERIENCE ---\n` +
+        `Level: ${formData.experience}\n` +
+        `Certifications: ${formData.certifications || "Not provided"}\n\n` +
+        `--- TRIP DETAILS ---\n` +
+        `Group Size: ${formData.groupSize}\n` +
+        `Special Requirements: ${formData.specialRequirements || "None"}\n` +
+        `How Heard: ${formData.howHeard || "Not specified"}`
+    )
+    window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`
   }
 
   return (
-    <section className="pt-28 pb-20 bg-background">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="bg-background pt-28 pb-20">
+      <div className="mx-auto max-w-6xl px-6">
         {/* Back Link */}
         <Link
           href="/expeditions"
-          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
+          className="text-muted-foreground hover:text-foreground mb-8 inline-flex items-center gap-2 transition-colors"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="h-4 w-4" />
           Back to Expeditions
         </Link>
 
-        <div className="grid lg:grid-cols-[1fr_400px] gap-12">
+        <div className="grid gap-12 lg:grid-cols-[1fr_400px]">
           {/* Form */}
           <div>
-            <h1 className="font-serif text-3xl md:text-4xl text-foreground mb-3">Request to Join</h1>
-            <p className="text-muted-foreground text-lg mb-8">
-              Complete this brief and we'll get back to you within 24 hours to discuss availability and next steps.
+            <h1 className="text-foreground mb-3 font-serif text-3xl md:text-4xl">
+              Request to Join
+            </h1>
+            <p className="text-muted-foreground mb-8 text-lg">
+              Complete this brief and we'll get back to you within 24 hours to discuss availability
+              and next steps.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Personal Info */}
               <div className="space-y-4">
-                <h3 className="font-medium text-foreground border-b border-border pb-2">About You</h3>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <h3 className="text-foreground border-border border-b pb-2 font-medium">
+                  About You
+                </h3>
+                <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name *</Label>
                     <Input
@@ -88,7 +116,7 @@ export function RequestToJoinForm({ expedition }: { expedition: Expedition }) {
                     />
                   </div>
                 </div>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="phone">WhatsApp Number *</Label>
                     <Input
@@ -114,7 +142,9 @@ export function RequestToJoinForm({ expedition }: { expedition: Expedition }) {
 
               {/* Experience */}
               <div className="space-y-4">
-                <h3 className="font-medium text-foreground border-b border-border pb-2">Your Experience</h3>
+                <h3 className="text-foreground border-border border-b pb-2 font-medium">
+                  Your Experience
+                </h3>
                 <div className="space-y-2">
                   <Label htmlFor="experience">Diving / Adventure Experience *</Label>
                   <Select
@@ -148,7 +178,9 @@ export function RequestToJoinForm({ expedition }: { expedition: Expedition }) {
 
               {/* Trip Details */}
               <div className="space-y-4">
-                <h3 className="font-medium text-foreground border-b border-border pb-2">Trip Details</h3>
+                <h3 className="text-foreground border-border border-b pb-2 font-medium">
+                  Trip Details
+                </h3>
                 <div className="space-y-2">
                   <Label htmlFor="groupSize">How many people in your group? *</Label>
                   <Select
@@ -167,13 +199,17 @@ export function RequestToJoinForm({ expedition }: { expedition: Expedition }) {
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="specialRequirements">Any special requirements or questions?</Label>
+                  <Label htmlFor="specialRequirements">
+                    Any special requirements or questions?
+                  </Label>
                   <Textarea
                     id="specialRequirements"
                     placeholder="Dietary requirements, equipment needs, specific interests, or any questions about the expedition..."
                     rows={4}
                     value={formData.specialRequirements}
-                    onChange={(e) => setFormData({ ...formData, specialRequirements: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, specialRequirements: e.target.value })
+                    }
                   />
                 </div>
                 <div className="space-y-2">
@@ -201,60 +237,66 @@ export function RequestToJoinForm({ expedition }: { expedition: Expedition }) {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground w-full gap-2"
               >
-                <Send className="w-4 h-4" />
+                <Send className="h-4 w-4" />
                 Submit Request
               </Button>
 
-              <p className="text-muted-foreground text-xs text-center">
-                Submitting a request does not guarantee a spot. We review all applications to ensure the right fit for
-                the expedition.
+              <p className="text-muted-foreground text-center text-xs">
+                Submitting a request does not guarantee a spot. We review all applications to ensure
+                the right fit for the expedition.
               </p>
             </form>
           </div>
 
           {/* Sidebar - Expedition Summary */}
-          <div className="lg:sticky lg:top-28 h-fit">
-            <div className="bg-card border border-border rounded-lg overflow-hidden">
+          <div className="h-fit lg:sticky lg:top-28">
+            <div className="bg-card border-border overflow-hidden rounded-lg border">
               <div className="relative aspect-video">
                 <Image
-                  src={expedition.image || "/placeholder.svg"}
+                  src={expedition.image || "/images/placeholders/default.svg"}
                   alt={expedition.title}
                   fill
                   className="object-cover"
                 />
-                <Badge className="absolute top-3 left-3 bg-primary text-primary-foreground">{expedition.type}</Badge>
+                <Badge className="bg-primary text-primary-foreground absolute top-3 left-3">
+                  {expedition.type}
+                </Badge>
               </div>
               <div className="p-6">
-                <h2 className="font-serif text-xl text-foreground mb-4">{expedition.title}</h2>
+                <h2 className="text-foreground mb-4 font-serif text-xl">{expedition.title}</h2>
                 <div className="space-y-3 text-sm">
-                  <div className="flex items-center gap-3 text-muted-foreground">
-                    <MapPin className="w-4 h-4 flex-shrink-0" />
+                  <div className="text-muted-foreground flex items-center gap-3">
+                    <MapPin className="h-4 w-4 flex-shrink-0" />
                     <span>{expedition.location}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-muted-foreground">
-                    <Calendar className="w-4 h-4 flex-shrink-0" />
+                  <div className="text-muted-foreground flex items-center gap-3">
+                    <Calendar className="h-4 w-4 flex-shrink-0" />
                     <span>{expedition.dates}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-muted-foreground">
-                    <Users className="w-4 h-4 flex-shrink-0" />
+                  <div className="text-muted-foreground flex items-center gap-3">
+                    <Users className="h-4 w-4 flex-shrink-0" />
                     <span>{expedition.spots} spots remaining</span>
                   </div>
                 </div>
-                <div className="border-t border-border mt-5 pt-5">
-                  <div className="flex items-baseline justify-between mb-4">
+                <div className="border-border mt-5 border-t pt-5">
+                  <div className="mb-4 flex items-baseline justify-between">
                     <span className="text-muted-foreground text-sm">Starting from</span>
-                    <span className="font-serif text-2xl text-foreground">{expedition.priceFrom}</span>
+                    <span className="text-foreground font-serif text-2xl">
+                      {expedition.priceFrom}
+                    </span>
                   </div>
-                  <p className="text-muted-foreground text-xs mb-4">Final pricing provided upon application review.</p>
+                  <p className="text-muted-foreground mb-4 text-xs">
+                    Final pricing provided upon application review.
+                  </p>
                   <Button variant="outline" className="w-full gap-2 bg-transparent" asChild>
                     <a
-                      href={`https://wa.me/1234567890?text=Hi! I have a question about the ${expedition.title}`}
+                      href={`${CONTACT.whatsapp.url}?text=${encodeURIComponent(`Hi! I have a question about the ${expedition.title}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <MessageCircle className="w-4 h-4" />
+                      <MessageCircle className="h-4 w-4" />
                       Questions? WhatsApp Us
                     </a>
                   </Button>
