@@ -61,6 +61,15 @@ export const partners: Partner[] = [
     description:
       "Premium Red Sea liveaboard safari boat offering versatile expeditions for recreational and technical/CCR divers. Fully equipped for challenging dive sites while also hosting yoga and spiritual retreats, blending underwater exploration with holistic wellness.",
   },
+  {
+    name: "Amru's Diving",
+    type: "Trimix Diving Instructor",
+    location: "Dahab, Egypt",
+    tier: "Verified",
+    logo: "/images/partners/amrusdiving.jpg",
+    description:
+      "Technical & recreational diving training center specializing in tech diving with a deep commitment to safety, precision, and delivering unforgettable underwater experiences. Expert instructor offering comprehensive training programs from recreational fundamentals to advanced technical diving. Passionate about transforming diving enthusiasm into refined skills through meticulous instruction, personalized guidance, and proven methodologies that build confident, capable divers ready to explore the depths with both competence and wonder.",
+  },
 ]
 
 /**
