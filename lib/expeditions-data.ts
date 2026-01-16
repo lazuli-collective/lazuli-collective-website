@@ -8,19 +8,19 @@ import type { Expedition } from "./types"
 export const expeditions: Expedition[] = [
   {
     id: "gallipoli-tech-wreck-2026",
-    title: "Gallipoli WWI Wreck Expedition",
+    title: "Gallipoli WWI Wreck Tour",
     location: "Turkey",
-    region: "Dardanelles",
+    region: "Çanakkale",
     type: "Tech Diving",
     icon: Anchor,
     dates: "15-22 September 2026",
-    duration: "8 days",
-    spots: 8,
-    totalSpots: 12,
+    duration: "7 days",
+    spots: 14,
+    totalSpots: 16,
     image: "/images/expeditions/gallipoli-wrecks.jpg",
     heroImage: "/images/expeditions/gallipoli-wrecks.jpg",
     description:
-      "Descend into history. Eight days exploring the legendary WWI wrecks of the Dardanelles—from HMS Majestic at 24m to the deepest battleships at 90m. Open Circuit and CCR configurations welcome.",
+      "Descend into history. Seven days exploring the legendary WWI wrecks of the Dardanelles—from HMS Majestic at 24m to the deepest battleships at 90m. Open Circuit and CCR configurations welcome.",
     longDescription:
       "The Gallipoli Peninsula is hallowed ground—both above and below the waterline. In 1915, during one of the bloodiest campaigns of World War I, the narrow strait of the Dardanelles became the final resting place for Allied and Ottoman vessels alike. Today, these wrecks lie scattered across depths ranging from recreational to extreme technical, each one a time capsule of sacrifice and maritime history.\n\nThis expedition is designed for serious technical divers seeking to explore wrecks that few will ever see. From the imposing bulk of HMS Majestic—a pre-dreadnought battleship torpedoed by a German U-boat—to the deeper sites that demand trimix and extended decompression, every dive is a pilgrimage into the past. We've partnered with Turkey's premier technical diving operation to ensure every aspect of your diving is handled: twin sets, stages, bailout cylinders, trimix and helitrox fills, CCR sorbalime, DPVs for the deeper penetrations—if you need it, we've got it sorted.\n\nWhether you're an experienced OC tech diver or a rebreather specialist, this expedition will push your skills and reward you with encounters that redefine what wreck diving can be.",
     highlights: [
