@@ -5,7 +5,7 @@ export const BRAND = {
   name: "The Lazuli Collective",
   tagline: "Bespoke Adventure Network",
   description: "Your insider connection to premium adventure experiences in Egypt & Turkey.",
-  locations: ["Hurghada", "Bodrum"] as const,
+  locations: ["Egypt", "Turkey"] as const,
   foundedYear: 2026,
 } as const
 
@@ -27,9 +27,10 @@ export const CONTACT = {
 // Social Media
 // =============================================================================
 export const SOCIAL = {
-  instagram: "", // TODO: Add real URLs
-  facebook: "",
+  instagram: "https://instagram.com/lazuli.adventures", // TODO: Add real URLs
+  facebook: "https://www.facebook.com/thelazulicollective",
   youtube: "",
+  linkedin: "https://www.linkedin.com/company/111119101/",
 } as const
 
 // =============================================================================

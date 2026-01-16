@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { MessageCircle, Instagram, Facebook, Youtube } from "lucide-react"
+import { MessageCircle, Instagram, Facebook, Youtube, Linkedin } from "lucide-react"
 import { BRAND, CONTACT, SOCIAL } from "@/lib/constants"
 
 const footerLinks = {
@@ -75,6 +75,17 @@ export function Footer() {
                   aria-label="YouTube"
                 >
                   <Youtube className="h-5 w-5" />
+                </a>
+              )}
+              {SOCIAL.linkedin && (
+                <a
+                  href={SOCIAL.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-background/10 hover:bg-background/20 flex h-10 w-10 items-center justify-center rounded-full transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5" />
                 </a>
               )}
             </div>
