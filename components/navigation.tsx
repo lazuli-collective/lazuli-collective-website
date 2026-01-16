@@ -9,7 +9,7 @@ import { BRAND, CONTACT } from "@/lib/constants"
 
 const navLinks = [
   { href: "#expeditions", label: "Expeditions" },
-  { href: "#tailor-made", label: "Tailor-Made" },
+  { href: "#tailor-made", label: "Bespoke Itineraries" },
   // { href: "#network", label: "The Network" }, // Hidden until ready
   { href: "#partner", label: "Partner With Us" },
 ]

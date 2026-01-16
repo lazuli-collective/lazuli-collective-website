@@ -5,7 +5,7 @@ import { BRAND, CONTACT, SOCIAL } from "@/lib/constants"
 const footerLinks = {
   explore: [
     { label: "Expeditions", href: "#expeditions" },
-    { label: "Tailor-Made", href: "#tailor-made" },
+    { label: "Bespoke Itineraries", href: "#tailor-made" },
     // { label: "The Network", href: "/network" }, // Hidden until ready
     { label: "Journal", href: "#journal" },
   ],

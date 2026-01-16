@@ -1,17 +1,46 @@
 "use client"
 
+import { useEffect, useCallback } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Calendar, Users, MapPin, ArrowRight } from "lucide-react"
+import { Calendar, Users, MapPin, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
+import Autoplay from "embla-carousel-autoplay"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel"
 import { BRAND } from "@/lib/constants"
 import { expeditions } from "@/lib/expeditions-data"
-
-// Show first 3 expeditions on homepage
-const featuredExpeditions = expeditions.slice(0, 3)
+import { useState } from "react"
 
 export function ExpeditionsSection() {
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!api) return
+
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap())
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap())
+    })
+  }, [api])
+
+  const scrollPrev = useCallback(() => {
+    api?.scrollPrev()
+  }, [api])
+
+  const scrollNext = useCallback(() => {
+    api?.scrollNext()
+  }, [api])
+
   return (
     <section id="expeditions" className="bg-secondary/30 py-24">
       <div className="mx-auto max-w-7xl px-6">
@@ -31,88 +60,144 @@ export function ExpeditionsSection() {
           </p>
         </div>
 
-        {/* Expeditions Grid */}
-        <div className="grid gap-6 lg:grid-cols-3">
-          {featuredExpeditions.map((expedition) => (
-            <article
-              key={expedition.id}
-              className="group bg-card border-border hover:border-primary/30 overflow-hidden rounded-lg border transition-all duration-300"
-            >
-              <Link
-                href={`/expeditions/${expedition.id}`}
-                className="relative block aspect-[4/3] overflow-hidden"
-              >
-                <Image
-                  src={expedition.image || "/images/placeholders/default.svg"}
-                  alt={expedition.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute top-4 left-4 flex gap-2">
-                  <Badge className="bg-background/90 text-foreground hover:bg-background/90">
-                    {expedition.type}
-                  </Badge>
-                  <Badge
-                    className={
-                      expedition.spots <= 5
-                        ? "bg-accent text-accent-foreground hover:bg-accent"
-                        : "bg-primary text-primary-foreground hover:bg-primary"
-                    }
-                  >
-                    {expedition.status}
-                  </Badge>
-                </div>
-              </Link>
-
-              {/* Content */}
-              <div className="p-6">
-                <div className="text-muted-foreground mb-3 flex items-center gap-2 text-sm">
-                  <MapPin className="h-4 w-4" />
-                  {expedition.location}
-                </div>
-
-                <Link href={`/expeditions/${expedition.id}`}>
-                  <h3 className="text-foreground group-hover:text-primary mb-3 font-serif text-xl transition-colors">
-                    {expedition.title}
-                  </h3>
-                </Link>
-
-                <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                  {expedition.description}
-                </p>
-
-                <div className="text-muted-foreground mb-6 flex items-center gap-4 text-sm">
-                  <span className="flex items-center gap-1.5">
-                    <Calendar className="h-4 w-4" />
-                    {expedition.dates}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Users className="h-4 w-4" />
-                    {expedition.spots} spots left
-                  </span>
-                </div>
-
-                <Button
-                  variant="outline"
-                  className="group/btn hover:bg-primary hover:text-primary-foreground hover:border-primary w-full bg-transparent"
-                  asChild
+        {/* Carousel */}
+        <div className="relative">
+          <Carousel
+            setApi={setApi}
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            plugins={[
+              Autoplay({
+                delay: 5000,
+                stopOnInteraction: true,
+                stopOnMouseEnter: true,
+              }),
+            ]}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {expeditions.map((expedition) => (
+                <CarouselItem
+                  key={expedition.id}
+                  className="pl-4 md:basis-1/2 lg:basis-1/3"
                 >
-                  <Link href={`/expeditions/${expedition.id}`}>
-                    View Details
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                  </Link>
-                </Button>
-              </div>
-            </article>
-          ))}
+                  <article className="group bg-card border-border hover:border-primary/30 h-full overflow-hidden rounded-lg border transition-all duration-300">
+                    <Link
+                      href={`/expeditions/${expedition.id}`}
+                      className="relative block aspect-[4/3] overflow-hidden"
+                    >
+                      <Image
+                        src={expedition.image || "/images/placeholders/default.svg"}
+                        alt={expedition.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute top-4 left-4 flex gap-2">
+                        <Badge className="bg-background/90 text-foreground hover:bg-background/90">
+                          {expedition.type}
+                        </Badge>
+                        <Badge
+                          className={
+                            expedition.spots <= 5
+                              ? "bg-accent text-accent-foreground hover:bg-accent"
+                              : "bg-primary text-primary-foreground hover:bg-primary"
+                          }
+                        >
+                          {expedition.status}
+                        </Badge>
+                      </div>
+                    </Link>
+
+                    {/* Content */}
+                    <div className="p-6">
+                      <div className="text-muted-foreground mb-3 flex items-center gap-2 text-sm">
+                        <MapPin className="h-4 w-4" />
+                        {expedition.location}
+                      </div>
+
+                      <Link href={`/expeditions/${expedition.id}`}>
+                        <h3 className="text-foreground group-hover:text-primary mb-3 font-serif text-xl transition-colors">
+                          {expedition.title}
+                        </h3>
+                      </Link>
+
+                      <p className="text-muted-foreground mb-4 line-clamp-2 text-sm leading-relaxed">
+                        {expedition.description}
+                      </p>
+
+                      <div className="text-muted-foreground mb-6 flex items-center gap-4 text-sm">
+                        <span className="flex items-center gap-1.5">
+                          <Calendar className="h-4 w-4" />
+                          {expedition.dates}
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                          <Users className="h-4 w-4" />
+                          {expedition.spots} spots left
+                        </span>
+                      </div>
+
+                      <Button
+                        variant="outline"
+                        className="group/btn hover:bg-primary hover:text-primary-foreground hover:border-primary w-full bg-transparent"
+                        asChild
+                      >
+                        <Link href={`/expeditions/${expedition.id}`}>
+                          View Details
+                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                        </Link>
+                      </Button>
+                    </div>
+                  </article>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={scrollPrev}
+            className="bg-background/80 hover:bg-background border-border hover:border-primary/50 absolute top-1/2 -left-4 z-10 hidden -translate-y-1/2 rounded-full border p-2 shadow-lg backdrop-blur-sm transition-all md:-left-6 md:flex"
+            aria-label="Previous expedition"
+          >
+            <ChevronLeft className="text-foreground h-5 w-5" />
+          </button>
+          <button
+            onClick={scrollNext}
+            className="bg-background/80 hover:bg-background border-border hover:border-primary/50 absolute top-1/2 -right-4 z-10 hidden -translate-y-1/2 rounded-full border p-2 shadow-lg backdrop-blur-sm transition-all md:-right-6 md:flex"
+            aria-label="Next expedition"
+          >
+            <ChevronRight className="text-foreground h-5 w-5" />
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="mt-6 flex justify-center gap-2">
+            {Array.from({ length: count }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => api?.scrollTo(index)}
+                className={`h-2 rounded-full transition-all ${
+                  index === current
+                    ? "bg-primary w-6"
+                    : "bg-primary/30 hover:bg-primary/50 w-2"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
-        {/* View All */}
-        <div className="mt-12 text-center">
-          <Button variant="link" className="text-primary gap-2" asChild>
+        {/* View All CTA - More Prominent */}
+        <div className="mt-12 flex justify-center">
+          <Button
+            size="lg"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 px-8 py-6 text-base font-medium shadow-lg transition-all hover:shadow-xl"
+            asChild
+          >
             <Link href="/expeditions">
               View All Expeditions
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-5 w-5" />
             </Link>
           </Button>
         </div>
