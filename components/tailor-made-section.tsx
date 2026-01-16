@@ -30,7 +30,7 @@ export function TailorMadeSection() {
               </div>
               <div className="relative aspect-square overflow-hidden rounded-lg">
                 <Image
-                  src="/images/expeditions/shipwreck-tec.jpg"
+                  src="/images/expeditions/dahab-canyon.jpg"
                   alt="Diving group"
                   fill
                   className="object-cover"
