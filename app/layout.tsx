@@ -1,0 +1,58 @@
+import type React from "react"
+import type { Metadata, Viewport } from "next"
+import { Inter, Playfair_Display } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
+import "./globals.css"
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+})
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+})
+
+export const metadata: Metadata = {
+  title: "The Lazuli Collective | Bespoke Adventure Network",
+  description:
+    "Your insider connection to the best adventure experiences in Egypt & Turkey. Curated expeditions, liveaboards, and bespoke itineraries for serious adventurers.",
+  keywords: [
+    "adventure travel",
+    "Egypt diving",
+    "Turkey expeditions",
+    "liveaboard",
+    "tech diving",
+    "Red Sea",
+    "Gallipoli",
+  ],
+  authors: [{ name: "The Lazuli Collective" }],
+  openGraph: {
+    title: "The Lazuli Collective | Bespoke Adventure Network",
+    description: "Your insider connection to premium adventure experiences in Egypt & Turkey.",
+    type: "website",
+  },
+    generator: 'v0.app'
+}
+
+export const viewport: Viewport = {
+  themeColor: "#2D4A6B",
+  width: "device-width",
+  initialScale: 1,
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en">
+      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
+        {children}
+        <Analytics />
+      </body>
+    </html>
+  )
+}
