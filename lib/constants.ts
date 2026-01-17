@@ -4,8 +4,8 @@
 export const BRAND = {
   name: "The Lazuli Collective",
   tagline: "Bespoke Adventure Network",
-  description: "Your insider connection to premium adventure experiences in Egypt & Turkey.",
-  locations: ["Egypt", "Turkey"] as const,
+  description: "Your insider connection to premium adventure experiences in the Red Sea & Mediterranean Sea.",
+  locations: ["Red Sea", "Mediterranean Sea"] as const,
   foundedYear: 2026,
 } as const
 
@@ -52,10 +52,19 @@ export const SEO = {
     "adventure travel",
     "Egypt diving",
     "Turkey expeditions",
+    "Mediterranean Sea",
     "liveaboard",
     "tech diving",
-    "Red Sea",
-    "Gallipoli",
+    "Red Sea diving",
+    "Mediterranean Sea diving",
+    "Gallipoli diving",
+    "Dahab diving",
+    "Abu Talha diving",
+    "Blue Hole diving",
+    "The Canyon diving",
+    "Tiger Canyon diving",
+    "Gorilla Head diving",
+    "The Arch diving",
   ] as const,
   themeColor: "#2D4A6B", // Lazuli blue
 } as const

@@ -20,7 +20,7 @@ export function HeroSection() {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
         <p className="text-sand/80 mb-6 text-sm font-medium tracking-[0.3em] uppercase">
-          Egypt & Turkey
+          Red Sea, Mediterranean Sea, and More
         </p>
 
         <h1 className="text-background mb-6 font-serif text-4xl leading-tight font-medium text-balance sm:text-5xl md:text-6xl lg:text-7xl">

@@ -3,9 +3,9 @@ import { Footer } from "@/components/footer"
 import { PartnerApplicationForm } from "@/components/partner-application-form"
 
 export const metadata = {
-  title: "Apply to Join the Network | The Lazuli Collective",
+  title: "Partner With Us | The Lazuli Collective",
   description:
-    "Are you an established adventure operator in Egypt or Turkey? Apply to join The Lazuli Collective network of vetted partners.",
+    "Are you an established adventure operator in the Red Sea or Mediterranean Sea? Apply to join The Lazuli Collective network of vetted partners.",
 }
 
 export default function PartnerApplyPage() {
