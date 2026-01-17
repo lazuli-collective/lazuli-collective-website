@@ -21,15 +21,21 @@ export function ExpeditionsSection() {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
   const [count, setCount] = useState(0)
+  const [canScrollPrev, setCanScrollPrev] = useState(false)
+  const [canScrollNext, setCanScrollNext] = useState(false)
 
   useEffect(() => {
     if (!api) return
 
     setCount(api.scrollSnapList().length)
     setCurrent(api.selectedScrollSnap())
+    setCanScrollPrev(api.canScrollPrev())
+    setCanScrollNext(api.canScrollNext())
 
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap())
+      setCanScrollPrev(api.canScrollPrev())
+      setCanScrollNext(api.canScrollNext())
     })
   }, [api])
 
@@ -156,20 +162,24 @@ export function ExpeditionsSection() {
           </Carousel>
 
           {/* Navigation Arrows */}
-          <button
-            onClick={scrollPrev}
-            className="bg-background/80 hover:bg-background border-border hover:border-primary/50 absolute top-1/2 -left-4 z-10 hidden -translate-y-1/2 rounded-full border p-2 shadow-lg backdrop-blur-sm transition-all md:-left-6 md:flex"
-            aria-label="Previous expedition"
-          >
-            <ChevronLeft className="text-foreground h-5 w-5" />
-          </button>
-          <button
-            onClick={scrollNext}
-            className="bg-background/80 hover:bg-background border-border hover:border-primary/50 absolute top-1/2 -right-4 z-10 hidden -translate-y-1/2 rounded-full border p-2 shadow-lg backdrop-blur-sm transition-all md:-right-6 md:flex"
-            aria-label="Next expedition"
-          >
-            <ChevronRight className="text-foreground h-5 w-5" />
-          </button>
+          {canScrollPrev && (
+            <button
+              onClick={scrollPrev}
+              className="bg-background/80 hover:bg-background border-border hover:border-primary/50 absolute top-1/2 -left-4 z-10 hidden -translate-y-1/2 cursor-pointer rounded-full border p-2 shadow-lg backdrop-blur-sm transition-all md:-left-6 md:flex"
+              aria-label="Previous expedition"
+            >
+              <ChevronLeft className="text-foreground h-5 w-5" />
+            </button>
+          )}
+          {canScrollNext && (
+            <button
+              onClick={scrollNext}
+              className="bg-background/80 hover:bg-background border-border hover:border-primary/50 absolute top-1/2 -right-4 z-10 hidden -translate-y-1/2 cursor-pointer rounded-full border p-2 shadow-lg backdrop-blur-sm transition-all md:-right-6 md:flex"
+              aria-label="Next expedition"
+            >
+              <ChevronRight className="text-foreground h-5 w-5" />
+            </button>
+          )}
 
           {/* Dots Indicator */}
           <div className="mt-6 flex justify-center gap-2">
@@ -177,7 +187,7 @@ export function ExpeditionsSection() {
               <button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
-                className={`h-2 rounded-full transition-all ${
+                className={`h-2 cursor-pointer rounded-full transition-all ${
                   index === current
                     ? "bg-primary w-6"
                     : "bg-primary/30 hover:bg-primary/50 w-2"
