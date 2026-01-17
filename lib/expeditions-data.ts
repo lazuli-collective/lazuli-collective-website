@@ -12,7 +12,7 @@ export const expeditions: Expedition[] = [
     title: "The Ghosts of Gallipoli",
     location: "Çanakkale, Turkey",
     region: "Gallipoli",
-    type: "Tec, Shipwrecks",
+    type: "Shipwrecks, Tec",
     icon: Anchor,
     dates: "15-22 July 2026 (TBC)",
     duration: "8 days",
@@ -138,10 +138,10 @@ export const expeditions: Expedition[] = [
     image: "/images/expeditions/dahab-canyon.jpg",
     heroImage: "/images/expeditions/dahab-canyon.jpg",
     description:
-      "Into the unknown. North of Dahab lies Abu Talha—a labyrinth of deep canyons, unexplored caves, and vertical walls that only a handful of local divers have ever seen. This is a true expedition: 6 days of diving from 9m to 90m, aboard the brand-new Celesta, guided by one of Dahab's most experienced technical explorers.",
+      "Into the unknown. North of Dahab lies Abu Talha—a labyrinth of deep canyons, unexplored caves, and vertical walls that only a handful of local divers have ever seen. This is a true expedition: 6 days of diving at 50m+, aboard the brand-new Celesta, guided by one of Dahab's most experienced technical explorers.",
     longDescription:
       "Everyone knows Dahab's Blue Hole and The Canyon. But the coastline north of Dahab hides something far more interesting—a region called Abu Talha, where dozens of canyons slice through the reef, cave systems twist into unexplored darkness, and vertical walls drop into the abyss. Very few divers know it exists. Even fewer have dived it.\n\nThis is not a typical Red Sea liveaboard. This is an expedition into genuinely uncharted territory. Many of these sites have never been formally mapped. Some have been dived only by local technical divers pushing the limits of what's accessible. We don't have a polished itinerary with named sites and established routes—we have GPS coordinates, local knowledge, and the flexibility to explore what we find.\n\nYour guide is Amr Mohamed, a TDI Trimix Instructor and KISS Rebreather Instructor who has spent years quietly exploring these canyons. He lives in Dahab. He knows these walls intimately. And he's the one who brought this golden spot to our attention. When Amr says a site is worth seeing, you dive it.\n\nThe vessel is the Celesta—a brand-new 2026 liveaboard designed by a Swedish interior designer and purpose-built for technical and CCR diving operations. Full helium and oxygen supplies, CCR support, booster station, dedicated filling station, and the kind of deck space that serious technical divers need. Breakfast, lunch, and dinner provided. The bar is stocked if you want it.\n\nWe depart from Hurghada and sail north to the Dahab coastline, spending six full days diving the Abu Talha region before returning. Depths range from 9m in the shallow reef sections to 90m in the deepest canyon penetrations. This expedition is designed for experienced technical divers—ideally advanced trimix and CCR certified—who are comfortable with exploration diving, overhead environments, and the inherent uncertainties of venturing where few have gone before.\n\nA note on expectations: this is real exploration. Conditions change. Not every dive will go as planned. Some days we'll discover something extraordinary; other days the sea will have other ideas. If you're looking for a predictable, polished diving holiday, this isn't it. If you want to be among the first to dive sites that most technical divers will never see, welcome aboard.",
-    highlights: ["Unexplored canyons", "9-90m depth range", "CCR & Trimix", "True expedition"],
+    highlights: ["Unexplored canyons", "50m+ depths", "CCR & Trimix", "True expedition"],
     status: "Early Access",
     priceFrom: "€3,000",
     included: [
@@ -247,7 +247,7 @@ export const expeditions: Expedition[] = [
     title: "Northern Red Sea Deep Wrecks",
     location: "Egypt, Red Sea",
     region: "Northern Red Sea",
-    type: "Rec/Tec, Shipwrecks",
+    type: "Shipwrecks, Rec & Tec",
     icon: Anchor,
     dates: "8-15 August 2026 (TBC)",
     duration: "8 days",
