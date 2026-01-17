@@ -7,11 +7,12 @@ import {
   Clock,
   ArrowRight,
   Check,
-  X,
+  Sparkles,
   MessageCircle,
   ArrowLeft,
   Compass,
   Shield,
+  Info,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -155,8 +156,8 @@ export function ExpeditionDetail({ expedition }: { expedition: Expedition }) {
                 </div>
                 <div>
                   <h2 className="text-foreground mb-4 flex items-center gap-2 font-serif text-xl">
-                    <X className="text-accent h-5 w-5" />
-                    Not Included
+                    <Sparkles className="text-primary h-5 w-5" />
+                    Customize Your Package
                   </h2>
                   <ul className="space-y-3">
                     {expedition.notIncluded.map((item) => (
@@ -164,7 +165,7 @@ export function ExpeditionDetail({ expedition }: { expedition: Expedition }) {
                         key={item}
                         className="text-muted-foreground flex items-start gap-3 text-sm"
                       >
-                        <X className="text-accent mt-0.5 h-4 w-4 flex-shrink-0" />
+                        <Sparkles className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
                         {item}
                       </li>
                     ))}
@@ -192,6 +193,29 @@ export function ExpeditionDetail({ expedition }: { expedition: Expedition }) {
                   </ul>
                 </div>
               </div>
+
+              {/* Notes */}
+              {expedition.notes && expedition.notes.length > 0 && (
+                <div className="mb-12">
+                  <h2 className="text-foreground mb-4 flex items-center gap-2 font-serif text-xl">
+                    <Info className="text-primary h-5 w-5" />
+                    Notes
+                  </h2>
+                  <div className="bg-secondary/50 border-border rounded-lg border p-6">
+                    <ul className="space-y-3">
+                      {expedition.notes.map((note) => (
+                        <li
+                          key={note}
+                          className="text-muted-foreground flex items-start gap-3 text-sm"
+                        >
+                          <div className="bg-primary mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full" />
+                          {note}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
 
               {/* Crew */}
               {expedition.crew.length > 0 && (

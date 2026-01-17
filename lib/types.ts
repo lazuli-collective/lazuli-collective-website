@@ -60,6 +60,8 @@ export interface Expedition {
   notIncluded: string[]
   /** Requirements to join */
   requirements: string[]
+  /** Optional additional notes */
+  notes?: string[]
   /** Day-by-day itinerary */
   itinerary: ItineraryDay[]
   /** Expedition crew/guides */
